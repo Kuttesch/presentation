@@ -173,6 +173,118 @@
         </div>
       </div>
     </div>
+
+    <!-- Slide X: C Standard & Project Structure -->
+    <div class="slide-container" id="slide-c-structure">
+      <h2 class="slide-title">C Standard & Project Structure</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <h3>C Standard</h3>
+            <ul>
+              <li>C99</li>
+              <li>ANSI-C compatibility</li>
+            </ul>
+
+            <h3 style="margin-top: 2vw">Config Files</h3>
+            <ul>
+              <li>makefile</li>
+              <li>.clang-format</li>
+              <li>.gitignore</li>
+              <li>Doxyfile</li>
+              <li>README.md</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Folder Structure</h3>
+            <ul>
+              <li><code>src/</code> — source & private headers</li>
+              <li><code>include/</code> — public API</li>
+              <li><code>test/</code> — unit tests</li>
+              <li><code>html/</code></li>
+              <li><code>build/</code></li>
+              <li><code>example/</code></li>
+              <li><code>docs/</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide X: Coding Guidelines & Naming -->
+    <div class="slide-container" id="slide-c-guidelines">
+      <h2 class="slide-title">Coding Guidelines & Naming</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <h3>Mandatory Rules</h3>
+            <ul>
+              <li>File structure and organization</li>
+              <li>Header/source responsibilities</li>
+              <li>API declaration rules</li>
+              <li>Function structure and ordering</li>
+              <li>Error handling patterns</li>
+              <li>Testing requirements</li>
+              <li>Tooling expectations</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Naming & Structure</h3>
+            <ul>
+              <li><code>snake_case</code> — variables & functions</li>
+              <li><code>CamelCase</code> — structs & enums</li>
+              <li><code>UPPER_CASE</code> — macros & enum values</li>
+              <li>Include guards required</li>
+              <li>Strict include order</li>
+              <li>Public API in headers</li>
+              <li>Internal functions <code>static</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide X: Tooling, Compiler & Testing -->
+    <div class="slide-container" id="slide-c-tooling">
+      <h2 class="slide-title">Tooling, Compiler & Testing</h2>
+      <div class="content-area">
+        <div class="two-column">
+          <div>
+            <h3>Tooling</h3>
+            <ul>
+              <li>gcc</li>
+              <li>make</li>
+              <li>clang-format</li>
+              <li>gdb</li>
+            </ul>
+
+            <h3 style="margin-top: 2vw">Testing</h3>
+            <ul>
+              <li>Unity</li>
+              <li>gcovr</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Compiler Flags</h3>
+            <ul>
+              <li><code>-std=c99</code></li>
+              <li><code>-pedantic</code></li>
+              <li><code>-Wall</code></li>
+              <li><code>-Wextra</code></li>
+              <li><code>-Werror</code></li>
+            </ul>
+
+            <h3 style="margin-top: 2vw">Coverage Flags</h3>
+            <ul>
+              <li><code>-fprofile-arcs</code></li>
+              <li><code>-ftest-coverage</code></li>
+              <li><code>-lgcov</code></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+
     <!-- Slide X: Documentation -->
     <div class="slide-container" id="slide-c-documentation">
       <h2 class="slide-title">Documentation</h2>
