@@ -1,568 +1,615 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LA-eRacing – Software Development Documentation</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LA-eRacing – Software Development Documentation</title>
 
-    <style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet" />
 
-      * {
-        box-sizing: border-box;
-      }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-      body {
-        background: linear-gradient(180deg, #0f1116 0%, #141821 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3vw;
-        margin: 0;
-        min-height: 100vh;
-        padding: 3vw 0;
-        font-size: 1.4vw;
-        font-family: "Inter", sans-serif;
-        color: #e6e9ef;
-      }
+    body {
+      background: linear-gradient(180deg, #0f1116 0%, #141821 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3vw;
+      margin: 0;
+      min-height: 100vh;
+      padding: 3vw 0;
+      font-size: 1.4vw;
+      font-family: "Inter", sans-serif;
+      color: #e6e9ef;
+    }
 
-      .slide-container {
-        background: #181c23;
-        border: 0.1vw solid #262c36;
-        border-radius: 1.2vw;
-        box-shadow: 0 1.2vw 3vw rgba(0, 0, 0, 0.6);
-        display: flex;
-        flex-direction: column;
-        width: 90vw;
-        aspect-ratio: 16 / 9;
-        justify-content: center;
-        padding: 4vw;
-        position: relative;
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
-      }
+    .slide-container {
+      background: #181c23;
+      border: 0.1vw solid #262c36;
+      border-radius: 1.2vw;
+      box-shadow: 0 1.2vw 3vw rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+      aspect-ratio: 16 / 9;
+      justify-content: center;
+      padding: 4vw;
+      position: relative;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
 
-      .slide-container:hover {
-        transform: translateY(-0.3vw);
-        box-shadow: 0 1.5vw 4vw rgba(0, 0, 0, 0.7);
-      }
+    .slide-container:hover {
+      transform: translateY(-0.3vw);
+      box-shadow: 0 1.5vw 4vw rgba(0, 0, 0, 0.7);
+    }
 
-      .slide-container h1,
-      .slide-container h2,
-      .slide-container h3 {
-        color: #ffffff;
-        font-weight: 700;
-        margin: 0;
-      }
+    .slide-container h1,
+    .slide-container h2,
+    .slide-container h3 {
+      color: #ffffff;
+      font-weight: 700;
+      margin: 0;
+    }
 
-      .slide-container h1 {
-        font-size: 4.5em;
-        letter-spacing: -0.04em;
-        background: linear-gradient(120deg, #8b5cf6, #f97316);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
+    .slide-container h1 {
+      font-size: 4.5em;
+      letter-spacing: -0.04em;
+      background: linear-gradient(120deg, #8b5cf6, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-      .slide-title {
-        font-size: 2.8em;
-        margin-bottom: 2.5vw;
-        border-bottom: 0.15vw solid #262c36;
-        padding-bottom: 1vw;
-        color: #8b5cf6;
-      }
+    .slide-title {
+      font-size: 2.8em;
+      margin-bottom: 2.5vw;
+      border-bottom: 0.15vw solid #262c36;
+      padding-bottom: 1vw;
+      color: #8b5cf6;
+    }
 
-      .slide-container p,
-      .slide-container li {
-        color: #cfd6e3;
-        font-size: 1.1em;
-        line-height: 1.6;
-      }
+    .slide-container p,
+    .slide-container li {
+      color: #cfd6e3;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
 
-      .slide-container code {
-        font-family: "JetBrains Mono", monospace;
-        background-color: #111318;
-        border: 0.1vw solid #262c36;
-        border-radius: 0.5vw;
-        padding: 0.15vw 0.5vw;
-        color: #f97316;
-        font-size: 0.9em;
-      }
+    .slide-container code {
+      font-family: "JetBrains Mono", monospace;
+      background-color: #111318;
+      border: 0.1vw solid #262c36;
+      border-radius: 0.5vw;
+      padding: 0.15vw 0.5vw;
+      color: #f97316;
+      font-size: 0.9em;
+    }
 
-      /* ============================= */
-      /* Layout Helpers                */
-      /* ============================= */
+    /* ============================= */
+    /* Layout Helpers                */
+    /* ============================= */
 
-      .content-area {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: center;
-        width: 100%;
-      }
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: center;
+      width: 100%;
+    }
 
-      /* Two Column */
-      .two-column {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4vw;
-        width: 100%;
-        align-items: start;
-      }
+    /* Two Column */
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4vw;
+      width: 100%;
+      align-items: start;
+    }
 
-      /* Three Column */
-      .three-column {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 3vw;
-        width: 100%;
-        align-items: start;
-      }
+    /* Three Column */
+    .three-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3vw;
+      width: 100%;
+      align-items: start;
+    }
 
-      .two-column ul,
-      .three-column ul {
-        list-style: none;
-        padding: 0;
-      }
+    .two-column ul,
+    .three-column ul {
+      list-style: none;
+      padding: 0;
+    }
 
-      .two-column li,
-      .three-column li {
-        margin-bottom: 1.2vw;
-        padding-left: 2vw;
-        position: relative;
-      }
+    .two-column li,
+    .three-column li {
+      margin-bottom: 1.2vw;
+      padding-left: 2vw;
+      position: relative;
+    }
 
-      .two-column li::before,
-      .three-column li::before {
-        content: "▸";
-        position: absolute;
-        left: 0;
-        color: #8b5cf6;
-        font-weight: bold;
-      }
+    .two-column li::before,
+    .three-column li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: #8b5cf6;
+      font-weight: bold;
+    }
 
-      /* ============================= */
-      /* Title Slide                   */
-      /* ============================= */
+    /* ============================= */
+    /* Title Slide                   */
+    /* ============================= */
 
-      .title-layout {
-        text-align: center;
-      }
+    .title-layout {
+      text-align: center;
+    }
 
-      .title-layout .subtitle {
-        font-size: 1.5em;
-        color: #9aa4b2;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Slide 1: Hello -->
-    <div class="slide-container" id="slide-hello">
-      <div class="title-layout">
-        <h1>LA-eRacing</h1>
-        <p class="subtitle">Software Development Documentation</p>
+    .title-layout .subtitle {
+      font-size: 1.5em;
+      color: #9aa4b2;
+    }
 
-        <div style="margin-top: 3vw; text-align: center">
-          <p style="font-size: 1.6em; color: #8b949e">C · Git · Writing</p>
+
+    /* LAYOUT: Q&A */
+    .qa-layout {
+      text-align: center;
+    }
+
+    .qa-layout h2{
+      color: #ffffff;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .qa-layout h2 {
+      font-size: 4.5em;
+      letter-spacing: -0.04em;
+      background: linear-gradient(120deg, #8b5cf6, #f97316);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .qa-layout .big-text {
+      font-size: 4em;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 2vw;
+    }
+
+    .contact-info {
+      color: #8b949e;
+      font-size: 1.5em;
+      margin-top: 3vw;
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Slide 1: Hello -->
+  <div class="slide-container" id="slide-hello">
+    <div class="title-layout">
+      <h1>LA-eRacing</h1>
+      <p class="subtitle">Software Development Documentation</p>
+
+      <div style="margin-top: 3vw; text-align: center">
+        <p style="font-size: 1.6em; color: #8b949e">C · Git · Writing</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide X: C Standard & Project Structure -->
+  <div class="slide-container" id="slide-c-structure">
+    <h2 class="slide-title">C · Standard & Project Structure</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>C Standard</h3>
+          <ul>
+            <li>C99</li>
+            <li>ANSI-C compatibility</li>
+          </ul>
+
+          <h3 style="margin-top: 2vw">Config Files</h3>
+          <ul>
+            <li>makefile</li>
+            <li>.clang-format</li>
+            <li>.gitignore</li>
+            <li>Doxyfile</li>
+            <li>README.md</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Folder Structure</h3>
+          <ul>
+            <li><code>src/</code> — source & private headers</li>
+            <li><code>include/</code> — public API</li>
+            <li><code>test/</code> — unit tests</li>
+            <li><code>html/</code></li>
+            <li><code>build/</code></li>
+            <li><code>example/</code></li>
+            <li><code>docs/</code></li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide X: C Standard & Project Structure -->
-    <div class="slide-container" id="slide-c-structure">
-      <h2 class="slide-title">C · Standard & Project Structure</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>C Standard</h3>
-            <ul>
-              <li>C99</li>
-              <li>ANSI-C compatibility</li>
-            </ul>
-
-            <h3 style="margin-top: 2vw">Config Files</h3>
-            <ul>
-              <li>makefile</li>
-              <li>.clang-format</li>
-              <li>.gitignore</li>
-              <li>Doxyfile</li>
-              <li>README.md</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Folder Structure</h3>
-            <ul>
-              <li><code>src/</code> — source & private headers</li>
-              <li><code>include/</code> — public API</li>
-              <li><code>test/</code> — unit tests</li>
-              <li><code>html/</code></li>
-              <li><code>build/</code></li>
-              <li><code>example/</code></li>
-              <li><code>docs/</code></li>
-            </ul>
-          </div>
+  <!-- Slide X: Coding Guidelines & Naming -->
+  <div class="slide-container" id="slide-c-guidelines">
+    <h2 class="slide-title">C · Coding Guidelines & Naming</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Mandatory Rules</h3>
+          <ul>
+            <li>File structure and organization</li>
+            <li>Header/source responsibilities</li>
+            <li>API declaration rules</li>
+            <li>Function structure and ordering</li>
+            <li>Error handling patterns</li>
+            <li>Testing requirements</li>
+            <li>Tooling expectations</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Naming & Structure</h3>
+          <ul>
+            <li><code>snake_case</code> — variables & functions</li>
+            <li><code>CamelCase</code> — structs & enums</li>
+            <li><code>UPPER_CASE</code> — macros & enum values</li>
+            <li>Include guards required</li>
+            <li>Strict include order</li>
+            <li>Public API in headers</li>
+            <li>Internal functions <code>static</code></li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide X: Coding Guidelines & Naming -->
-    <div class="slide-container" id="slide-c-guidelines">
-      <h2 class="slide-title">C · Coding Guidelines & Naming</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Mandatory Rules</h3>
-            <ul>
-              <li>File structure and organization</li>
-              <li>Header/source responsibilities</li>
-              <li>API declaration rules</li>
-              <li>Function structure and ordering</li>
-              <li>Error handling patterns</li>
-              <li>Testing requirements</li>
-              <li>Tooling expectations</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Naming & Structure</h3>
-            <ul>
-              <li><code>snake_case</code> — variables & functions</li>
-              <li><code>CamelCase</code> — structs & enums</li>
-              <li><code>UPPER_CASE</code> — macros & enum values</li>
-              <li>Include guards required</li>
-              <li>Strict include order</li>
-              <li>Public API in headers</li>
-              <li>Internal functions <code>static</code></li>
-            </ul>
-          </div>
+  <!-- Slide X: Tooling, Compiler & Testing -->
+  <div class="slide-container" id="slide-c-tooling">
+    <h2 class="slide-title">C · Tooling, Compiler & Testing</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Tooling</h3>
+          <ul>
+            <li>gcc</li>
+            <li>make</li>
+            <li>clang-format</li>
+            <li>gdb</li>
+          </ul>
+
+          <h3 style="margin-top: 2vw">Testing</h3>
+          <ul>
+            <li>Unity</li>
+            <li>gcovr</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Compiler Flags</h3>
+          <ul>
+            <li><code>-std=c99</code></li>
+            <li><code>-pedantic</code></li>
+            <li><code>-Wall</code></li>
+            <li><code>-Wextra</code></li>
+            <li><code>-Werror</code></li>
+          </ul>
+
+          <h3 style="margin-top: 2vw">Coverage Flags</h3>
+          <ul>
+            <li><code>-fprofile-arcs</code></li>
+            <li><code>-ftest-coverage</code></li>
+            <li><code>-lgcov</code></li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide X: Tooling, Compiler & Testing -->
-    <div class="slide-container" id="slide-c-tooling">
-      <h2 class="slide-title">C · Tooling, Compiler & Testing</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Tooling</h3>
-            <ul>
-              <li>gcc</li>
-              <li>make</li>
-              <li>clang-format</li>
-              <li>gdb</li>
-            </ul>
-
-            <h3 style="margin-top: 2vw">Testing</h3>
-            <ul>
-              <li>Unity</li>
-              <li>gcovr</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Compiler Flags</h3>
-            <ul>
-              <li><code>-std=c99</code></li>
-              <li><code>-pedantic</code></li>
-              <li><code>-Wall</code></li>
-              <li><code>-Wextra</code></li>
-              <li><code>-Werror</code></li>
-            </ul>
-
-            <h3 style="margin-top: 2vw">Coverage Flags</h3>
-            <ul>
-              <li><code>-fprofile-arcs</code></li>
-              <li><code>-ftest-coverage</code></li>
-              <li><code>-lgcov</code></li>
-            </ul>
-          </div>
+  <!-- Slide X: Documentation -->
+  <div class="slide-container" id="slide-c-documentation">
+    <h2 class="slide-title">Documentation</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Doxygen</h3>
+          <ul>
+            <li>Generates HTML documentation</li>
+            <li>Controlled via <code>Doxyfile</code></li>
+            <li>Parses annotated comments</li>
+            <li>Output under <code>docs/doxygen/</code></li>
+            <li>CI/CD integration possible</li>
+          </ul>
         </div>
-      </div>
-    </div>  
-
-    <!-- Slide X: Documentation -->
-    <div class="slide-container" id="slide-c-documentation">
-      <h2 class="slide-title">Documentation</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Doxygen</h3>
-            <ul>
-              <li>Generates HTML documentation</li>
-              <li>Controlled via <code>Doxyfile</code></li>
-              <li>Parses annotated comments</li>
-              <li>Output under <code>docs/doxygen/</code></li>
-              <li>CI/CD integration possible</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Make Integration</h3>
-            <ul>
-              <li><code>make all</code></li>
-              <li><code>make clean</code></li>
-              <li><code>make test</code></li>
-              <li><code>make coverage</code></li>
-            </ul>
-          </div>
+        <div>
+          <h3>Make Integration</h3>
+          <ul>
+            <li><code>make all</code></li>
+            <li><code>make clean</code></li>
+            <li><code>make test</code></li>
+            <li><code>make coverage</code></li>
+          </ul>
         </div>
       </div>
     </div>
-    <!-- Slide: Writing – Embedded Requirements Guideline -->
-    <div class="slide-container" id="slide-writing-guideline">
-      <h2 class="slide-title">Writing · Embedded Requirements Guideline</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Defines</h3>
-            <ul>
-              <li>Functional requirements</li>
-              <li>Non-functional requirements</li>
-              <li>Hardware interaction</li>
-              <li>Timing, memory, CPU constraints</li>
-              <li>Public C API structure</li>
-              <li>Verification method</li>
-              <li>Wording conventions</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Goal</h3>
-            <ul>
-              <li>Clear and unambiguous requirements</li>
-              <li>Measurable and testable definitions</li>
-              <li>Reduced ambiguity during implementation</li>
-              <li>Improved review and verification quality</li>
-            </ul>
-          </div>
+  </div>
+  <!-- Slide: Writing – Embedded Requirements Guideline -->
+  <div class="slide-container" id="slide-writing-guideline">
+    <h2 class="slide-title">Writing · Embedded Requirements Guideline</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Defines</h3>
+          <ul>
+            <li>Functional requirements</li>
+            <li>Non-functional requirements</li>
+            <li>Hardware interaction</li>
+            <li>Timing, memory, CPU constraints</li>
+            <li>Public C API structure</li>
+            <li>Verification method</li>
+            <li>Wording conventions</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Goal</h3>
+          <ul>
+            <li>Clear and unambiguous requirements</li>
+            <li>Measurable and testable definitions</li>
+            <li>Reduced ambiguity during implementation</li>
+            <li>Improved review and verification quality</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Writing – Requirement Structure & Principles -->
-    <div class="slide-container" id="slide-writing-structure">
-      <h2 class="slide-title">Writing · Requirement Structure & Principles</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>What Requirements Must Cover</h3>
-            <ul>
-              <li>System behavior</li>
-              <li>Timing constraints</li>
-              <li>Hardware interaction</li>
-              <li>Error handling</li>
-              <li>Resource limitations</li>
-              <li>Public C API</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Writing Principles</h3>
-            <ul>
-              <li>Clear and unambiguous</li>
-              <li>Measurable</li>
-              <li>Testable</li>
-              <li>Aware of hardware constraints</li>
-              <li>No implementation details</li>
-            </ul>
-          </div>
+  <!-- Slide: Writing – Requirement Structure & Principles -->
+  <div class="slide-container" id="slide-writing-structure">
+    <h2 class="slide-title">Writing · Requirement Structure & Principles</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>What Requirements Must Cover</h3>
+          <ul>
+            <li>System behavior</li>
+            <li>Timing constraints</li>
+            <li>Hardware interaction</li>
+            <li>Error handling</li>
+            <li>Resource limitations</li>
+            <li>Public C API</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Writing Principles</h3>
+          <ul>
+            <li>Clear and unambiguous</li>
+            <li>Measurable</li>
+            <li>Testable</li>
+            <li>Aware of hardware constraints</li>
+            <li>No implementation details</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Writing – Functional & Hardware Requirements -->
-    <div class="slide-container" id="slide-writing-functional-hw">
-      <h2 class="slide-title">Writing · Functional & Hardware Requirements</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Functional Requirements</h3>
-            <ul>
-              <li>Describe system behavior</li>
-              <li>Cover normal and fault conditions</li>
-              <li>Define measurable timing tolerances</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Hardware Interface Requirements</h3>
-            <ul>
-              <li>GPIO direction and behavior</li>
-              <li>ADC resolution</li>
-              <li>SPI/I2C configuration</li>
-              <li>CAN frame format</li>
-              <li>Interrupt usage</li>
-            </ul>
-          </div>
+  <!-- Slide: Writing – Functional & Hardware Requirements -->
+  <div class="slide-container" id="slide-writing-functional-hw">
+    <h2 class="slide-title">Writing · Functional & Hardware Requirements</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Functional Requirements</h3>
+          <ul>
+            <li>Describe system behavior</li>
+            <li>Cover normal and fault conditions</li>
+            <li>Define measurable timing tolerances</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Hardware Interface Requirements</h3>
+          <ul>
+            <li>GPIO direction and behavior</li>
+            <li>ADC resolution</li>
+            <li>SPI/I2C configuration</li>
+            <li>CAN frame format</li>
+            <li>Interrupt usage</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Writing – Non-Functional & Verification -->
-    <div class="slide-container" id="slide-writing-nonfunctional">
-      <h2 class="slide-title">Writing · Non-Functional & Verification</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Non-Functional Requirements</h3>
-            <ul>
-              <li>Execution time limits with tolerance</li>
-              <li>Explicit RAM limits</li>
-              <li>No dynamic memory allocation</li>
-              <li>Defined CPU usage limits</li>
-              <li>Defined safe state behavior</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Verification Strategy</h3>
-            <ul>
-              <li>Unit tests</li>
-              <li>Integration tests</li>
-              <li>Hardware tests / measurements</li>
-              <li>Static analysis</li>
-              <li>Code inspection</li>
-            </ul>
-          </div>
+  <!-- Slide: Writing – Non-Functional & Verification -->
+  <div class="slide-container" id="slide-writing-nonfunctional">
+    <h2 class="slide-title">Writing · Non-Functional & Verification</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Non-Functional Requirements</h3>
+          <ul>
+            <li>Execution time limits with tolerance</li>
+            <li>Explicit RAM limits</li>
+            <li>No dynamic memory allocation</li>
+            <li>Defined CPU usage limits</li>
+            <li>Defined safe state behavior</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Verification Strategy</h3>
+          <ul>
+            <li>Unit tests</li>
+            <li>Integration tests</li>
+            <li>Hardware tests / measurements</li>
+            <li>Static analysis</li>
+            <li>Code inspection</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Git · Workflow Overview -->
-    <div class="slide-container" id="slide-git-overview">
-      <h2 class="slide-title">Git · Development Workflow</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Goals</h3>
-            <ul>
-              <li>Stable production branch</li>
-              <li>Traceable and clean history</li>
-              <li>High test reliability</li>
-              <li>Controlled integration through review</li>
-              <li>Predictable development workflow</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Core Rules</h3>
-            <ul>
-              <li>Never commit directly on <code>main</code></li>
-              <li>Always use SSH</li>
-              <li>Always use signed commits</li>
-              <li>Write clear commit messages</li>
-              <li>Keep commits small and focused</li>
-            </ul>
-          </div>
+  <!-- Slide: Git · Workflow Overview -->
+  <div class="slide-container" id="slide-git-overview">
+    <h2 class="slide-title">Git · Development Workflow</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Goals</h3>
+          <ul>
+            <li>Stable production branch</li>
+            <li>Traceable and clean history</li>
+            <li>High test reliability</li>
+            <li>Controlled integration through review</li>
+            <li>Predictable development workflow</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Core Rules</h3>
+          <ul>
+            <li>Never commit directly on <code>main</code></li>
+            <li>Always use SSH</li>
+            <li>Always use signed commits</li>
+            <li>Write clear commit messages</li>
+            <li>Keep commits small and focused</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Git · Issues & Branch Model -->
-    <div class="slide-container" id="slide-git-issues">
-      <h2 class="slide-title">Git · Issues & Branch Model</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Feature Workflow</h3>
-            <ul>
-              <li>Create Feature Issue (Type: Feature)</li>
-              <li>Create Sub-Issues</li>
-              <li>Assign maintainer</li>
-              <li>Create corresponding branches</li>
-            </ul>
+  <!-- Slide: Git · Issues & Branch Model -->
+  <div class="slide-container" id="slide-git-issues">
+    <h2 class="slide-title">Git · Issues & Branch Model</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Feature Workflow</h3>
+          <ul>
+            <li>Create Feature Issue (Type: Feature)</li>
+            <li>Create Sub-Issues</li>
+            <li>Assign maintainer</li>
+            <li>Create corresponding branches</li>
+          </ul>
 
-            <h3 style="margin-top: 2vw">Branch Structure</h3>
-            <ul>
-              <li><code>main</code> → protected production</li>
-              <li><code>feature/nameOfFeature</code></li>
-              <li><code>feature/nameOfFeature/nameOfSubIssue</code></li>
-              <li><code>fix/nameOfFix</code></li>
-            </ul>
-          </div>
-          <div>
-            <h3>Working on Sub-Issue</h3>
-            <ul>
-              <li>Branch from <code>feature</code></li>
-              <li>Active development on issue branch</li>
-              <li>Direct commits allowed on issue branch</li>
-              <li>No merges outside PRs</li>
-            </ul>
-          </div>
+          <h3 style="margin-top: 2vw">Branch Structure</h3>
+          <ul>
+            <li><code>main</code> → protected production</li>
+            <li><code>feature/nameOfFeature</code></li>
+            <li><code>feature/nameOfFeature/nameOfSubIssue</code></li>
+            <li><code>fix/nameOfFix</code></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Working on Sub-Issue</h3>
+          <ul>
+            <li>Branch from <code>feature</code></li>
+            <li>Active development on issue branch</li>
+            <li>Direct commits allowed on issue branch</li>
+            <li>No merges outside PRs</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Git · Pull Request & Review -->
-    <div class="slide-container" id="slide-git-pr">
-      <h2 class="slide-title">Git · Pull Request & Review</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Creating a Pull Request</h3>
-            <ul>
-              <li>From dev branch to merge branch</li>
-              <li>Assigned to maintainer</li>
-              <li>Reviewer assigned</li>
-              <li>Draft until review is expected</li>
-            </ul>
+  <!-- Slide: Git · Pull Request & Review -->
+  <div class="slide-container" id="slide-git-pr">
+    <h2 class="slide-title">Git · Pull Request & Review</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Creating a Pull Request</h3>
+          <ul>
+            <li>From dev branch to merge branch</li>
+            <li>Assigned to maintainer</li>
+            <li>Reviewer assigned</li>
+            <li>Draft until review is expected</li>
+          </ul>
 
-            <h3 style="margin-top: 2vw">Review Preconditions</h3>
-            <ul>
-              <li>Feature fully implemented</li>
-              <li>≥ 90% unit test coverage</li>
-              <li>All tests pass</li>
-              <li>CI passes</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Review Criteria</h3>
-            <ul>
-              <li>Functional correctness</li>
-              <li>All sub-issues resolved</li>
-              <li>Minimum 90% coverage</li>
-              <li>Deterministic tests</li>
-              <li>Clear naming and small commits</li>
-              <li>Clean commit history</li>
-              <li>Signed commits</li>
-              <li>No architectural violations</li>
-            </ul>
-          </div>
+          <h3 style="margin-top: 2vw">Review Preconditions</h3>
+          <ul>
+            <li>Feature fully implemented</li>
+            <li>≥ 90% unit test coverage</li>
+            <li>All tests pass</li>
+            <li>CI passes</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Review Criteria</h3>
+          <ul>
+            <li>Functional correctness</li>
+            <li>All sub-issues resolved</li>
+            <li>Minimum 90% coverage</li>
+            <li>Deterministic tests</li>
+            <li>Clear naming and small commits</li>
+            <li>Clean commit history</li>
+            <li>Signed commits</li>
+            <li>No architectural violations</li>
+          </ul>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Slide: Git · Merge & Post-Merge -->
-    <div class="slide-container" id="slide-git-merge">
-      <h2 class="slide-title">Git · Merge & Post-Merge</h2>
-      <div class="content-area">
-        <div class="two-column">
-          <div>
-            <h3>Merge Conditions</h3>
-            <ul>
-              <li>Reviewer approval</li>
-              <li>All CI checks pass</li>
-              <li>90%+ coverage verified</li>
-            </ul>
+  <!-- Slide: Git · Merge & Post-Merge -->
+  <div class="slide-container" id="slide-git-merge">
+    <h2 class="slide-title">Git · Merge & Post-Merge</h2>
+    <div class="content-area">
+      <div class="two-column">
+        <div>
+          <h3>Merge Conditions</h3>
+          <ul>
+            <li>Reviewer approval</li>
+            <li>All CI checks pass</li>
+            <li>90%+ coverage verified</li>
+          </ul>
 
-            <h3 style="margin-top: 2vw">Merge Rules</h3>
-            <ul>
-              <li>Only assigned maintainer may merge</li>
-              <li>No self-merging</li>
-              <li>No merging without review</li>
-              <li>Merge without squash</li>
-            </ul>
-          </div>
-          <div>
-            <h3>Post Merge</h3>
-            <ul>
-              <li>Verify CI on target branch</li>
-              <li>Address hotfixes immediately</li>
-              <li>Delete development branch</li>
-              <li>Close issue and PR</li>
-            </ul>
-          </div>
+          <h3 style="margin-top: 2vw">Merge Rules</h3>
+          <ul>
+            <li>Only assigned maintainer may merge</li>
+            <li>No self-merging</li>
+            <li>No merging without review</li>
+            <li>Merge without squash</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Post Merge</h3>
+          <ul>
+            <li>Verify CI on target branch</li>
+            <li>Address hotfixes immediately</li>
+            <li>Delete development branch</li>
+            <li>Close issue and PR</li>
+          </ul>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+
+
+  <!-- Slide 27: Q&A -->
+  <div class="slide-container" id="slide27">
+    <div class="qa-layout">
+      <h2>Q&A</h2>
+      <div class="big-text">Thank You!</div>
+      <p>Now opening the floor for questions on workflows, specific commands, or edge cases.</p>
+    </div>
+  </div>
+
+
+</body>
+
 </html>
